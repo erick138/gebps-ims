@@ -1,0 +1,8 @@
+# For hosts where the web root is this folder and cannot be changed to public/:
+# everything is forwarded to public/, and the code/data folders are not reachable.
+RewriteEngine On
+RewriteRule ^(app|database|storage)(/|$) - [F,L]
+RewriteRule ^\.env - [F,L]
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ public/$1 [L]
+Options -Indexes
